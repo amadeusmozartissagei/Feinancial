@@ -63,7 +63,7 @@ function CardInfo({ budgetList, incomeList }) {
           <div className="p-7 border mt-4 -mb-1 rounded-2xl flex items-center justify-between">
             <div className="">
               <div className="flex mb-2 flex-row space-x-1 items-center ">
-                <h2 className="text-md ">Finan Smart AI</h2>
+                <h2 className="text-md ">Mulyono AI</h2>
                 <Sparkles
                   className="rounded-full text-white w-10 h-10 p-2
     bg-gradient-to-r
@@ -84,7 +84,7 @@ function CardInfo({ budgetList, incomeList }) {
               <div>
                 <h2 className="text-sm">Total Budget</h2>
                 <h2 className="font-bold text-2xl">
-                  ${formatNumber(totalBudget)}
+                  Rp {formatNumber(totalBudget)}
                 </h2>
               </div>
               <PiggyBank className="bg-blue-800 p-3 h-12 w-12 rounded-full text-white" />
@@ -93,7 +93,7 @@ function CardInfo({ budgetList, incomeList }) {
               <div>
                 <h2 className="text-sm">Total Spend</h2>
                 <h2 className="font-bold text-2xl">
-                  ${formatNumber(totalSpend)}
+                  Rp {formatNumber(totalSpend)}
                 </h2>
               </div>
               <ReceiptText className="bg-blue-800 p-3 h-12 w-12 rounded-full text-white" />
@@ -109,7 +109,7 @@ function CardInfo({ budgetList, incomeList }) {
               <div>
                 <h2 className="text-sm">Sum of Income Streams</h2>
                 <h2 className="font-bold text-2xl">
-                  ${formatNumber(totalIncome)}
+                  Rp{formatNumber(totalIncome)}
                 </h2>
               </div>
               <CircleDollarSign className="bg-blue-800 p-3 h-12 w-12 rounded-full text-white" />

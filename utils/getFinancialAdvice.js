@@ -1,34 +1,26 @@
-// utils/getFinancialAdvice.js
-import OpenAI from "openai";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
-// Initialize the OpenAI client
-const openai = new OpenAI({
-  apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
-  dangerouslyAllowBrowser: true,
-});
+// Inisialisasi Google AI client
+const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GEMINI_API_KEY);
 
-// Function to fetch user-specific data (mocked for this example)
-
-// Function to generate personalized financial advice
 const getFinancialAdvice = async (totalBudget, totalIncome, totalSpend) => {
   console.log(totalBudget, totalIncome, totalSpend);
   try {
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
+    
     const userPrompt = `
       Based on the following financial data:
-      - Total Budget: ${totalBudget} USD 
-      - Expenses: ${totalSpend} USD 
-      - Incomes: ${totalIncome} USD
+      - Total Budget: Rp ${totalBudget}
+      - Expenses: Rp ${totalSpend} 
+      - Incomes: Rp ${totalIncome}
       Provide detailed financial advice in 2 sentence to help the user manage their finances more effectively.
+      gunakan bahasa indonesia.
     `;
 
-    // Send the prompt to the OpenAI API
-    const chatCompletion = await openai.chat.completions.create({
-      model: "gpt-4",
-      messages: [{ role: "user", content: userPrompt }],
-    });
-
-    // Process and return the response
-    const advice = chatCompletion.choices[0].message.content;
+    // Kirim prompt ke Gemini API
+    const result = await model.generateContent(userPrompt);
+    const response = await result.response;
+    const advice = response.text();
 
     console.log(advice);
     return advice;

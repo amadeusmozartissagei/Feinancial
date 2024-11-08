@@ -29,6 +29,15 @@ function IncomeList() {
     setIncomelist(result);
   };
 
+  const handleDelete = async (id) => {
+    try {
+      await db.delete(Incomes).where(eq(Incomes.id, id));
+      getIncomelist(); // refresh data setelah delete
+    } catch (error) {
+      console.error("Error deleting income:", error);
+    }
+  };
+
   return (
     <div className="mt-7">
       <div
@@ -38,7 +47,7 @@ function IncomeList() {
         <CreateIncomes refreshData={() => getIncomelist()} />
         {incomelist?.length > 0
           ? incomelist.map((budget, index) => (
-              <IncomeItem budget={budget} key={index} />
+              <IncomeItem budget={budget} key={index} onDelete={handleDelete} />
             ))
           : [1, 2, 3, 4, 5].map((item, index) => (
               <div
