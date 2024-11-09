@@ -11,9 +11,9 @@ const getFinancialAdvice = async (totalBudget, totalIncome, totalSpend) => {
     const userPrompt = `
       Based on the following financial data:
       - Total Budget: Rp ${totalBudget}
-      - Expenses: Rp ${totalSpend} 
+      - Expenses: Rp ${totalSpend}
       - Incomes: Rp ${totalIncome}
-      Provide detailed financial advice in 2 sentence to help the user manage their finances more effectively.
+      Provide remaining balance amount and detailed financial advice in 2 sentence to help the user manage their finances more effectively.
       gunakan bahasa indonesia.
     `;
 
